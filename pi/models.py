@@ -1,5 +1,9 @@
 from django.db import models
 
+#para trabajar con fechas
+import datetime
+from django.utils import timezone
+
 # Create your models here.
 
 class Ingrediente(models.Model):
@@ -12,18 +16,27 @@ class Ingrediente(models.Model):
 class Pizza(models.Model):
     pizza_id = models.IntegerField(primary_key=True)
     nom_pizza = models.CharField(max_length=30)
-    ingrediente = models.ForeignKey(Ingrediente, on_delete=models.CASCADE)
+    #ingrediente = models.ForeignKey(Ingrediente, on_delete=models.CASCADE)
 
     def __str__(self):
         return self.nom_pizza
 
 class TipoMasa(models.Model):
-	id_tipo_masa = models.IntegerField(primary_key=True)
+	tipo_masa_id = models.IntegerField(primary_key=True)
 	nom_tipo = models.CharField(max_length=7)
 
 	def __str__(self):
 		return self.nom_tipo
 
+class Hecha_De(models.Model):
+	corr_hec_de=models.AutoField(primary_key=True)
+	pizza=models.ForeignKey(Pizza,on_delete=models.CASCADE)
+	ingrediente=models.ForeignKey(Ingrediente,on_delete=models.CASCADE)
+	tipomasa=models.ForeignKey(TipoMasa,on_delete=models.CASCADE)
+
+	def __str__(self):
+		pass
+		
 #nuevos
 class Empleado(models.Model):
 	cod_empleado=models.IntegerField(primary_key=True)
@@ -34,7 +47,7 @@ class Empleado(models.Model):
 		return self.nom_empleado
 
 class Cliente(models.Model):
-	id_cliente=models.AutoField(primary_key=True)
+	cod_cliente=models.AutoField(primary_key=True)
 	"""
 	el autofield es para poner un nombre personalizado
 	a una id generada automaticamente
@@ -42,7 +55,20 @@ class Cliente(models.Model):
 	"""
 	nom_cliente=models.CharField(max_length=40)
 	dir_cliente=models.CharField(max_length=100)
-	tel_cliente=models-BigIntegerField()
+	tel_cliente=models.BigIntegerField()
 
-class Pedido(mdoels.Model):
+class Pedido(models.Model):
 	cod_pedido=models.IntegerField(primary_key=True)
+	fec_pedido=models.DateTimeField()
+
+class Detalle_Pedido(models.Model):
+	corr_det_ped=models.AutoField(primary_key=True)
+	pizza=models.ForeignKey(Pizza,on_delete=models.CASCADE)
+	pedido=models.ForeignKey(Pedido,on_delete=models.CASCADE)		
+	cant_pedido=models.IntegerField()
+#nuevos
+class Registro(models.Model):
+	cod_registro=models.AutoField(primary_key=True)
+	cod_empleado=models.ForeignKey(Empleado, on_delete=models.CASCADE)
+	cod_pedido=models.ForeignKey(Pedido, on_delete=models.CASCADE)
+	cod_cliente=models.ForeignKey(Cliente, on_delete=models.CASCADE)
