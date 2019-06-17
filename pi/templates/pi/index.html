@@ -1,0 +1,16 @@
+{% load static %}
+
+<link rel="stylesheet" type="text/css" href="{% static 'polls/style.css' %}">
+
+{% if pizza_list %}
+	<ul>
+		{% for pizza in pizza_list %}
+		<li>
+			<a href="{% url 'pi:home' pizza.pizza_id %}">{{ pizza.nom_pizza }}
+			</a>
+		</li>
+		{% endfor %}
+	</ul>
+{% else %}
+	<p>No pizza disponible we:(</p>
+{% endif %}
