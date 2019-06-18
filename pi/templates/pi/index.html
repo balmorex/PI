@@ -6,7 +6,7 @@
 	<ul>
 		{% for pizza in pizza_list %}
 		<li>
-			<a href="{% url 'pi:home' pizza.pizza_id %}">{{ pizza.nom_pizza }}
+			<a href="{% url 'pi:home' pizza.pizza_id %}">{{ pizza.nom_pizza }} {{ pizza.pizza_id }}
 			</a>
 		</li>
 		{% endfor %}

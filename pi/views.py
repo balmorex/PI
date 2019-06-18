@@ -2,7 +2,7 @@ from django.shortcuts import render
 from django.http import HttpResponse	#n
 from django.template import loader	#n
 from django.http import Http404	#n
-from .models import Pizza
+from .models import Pizza, Empleado
 
 from django.views import generic
 from django.urls import reverse
@@ -21,6 +21,13 @@ class HomeView(generic.DetailView):
 	model=Pizza
 	template_name='pi/home.html'
 
+#comentar en caso de err
+"""
+class LoginView(generic.LoginView):
+	model=Empleado
+	template_name='pi/login.html'
+"""	
+#...
 
 #nuevo
 def home(request, pizza_id):
@@ -28,3 +35,8 @@ def home(request, pizza_id):
 	#return HttpResponse("estas mirando la pizza: %s." % pizza_id)
 	return render(request,'pi/home.html', {'pizza':pizza})
 
+
+#comentar en caso de error
+def login(request):
+	return render(request,'pi/login.html')
+#......

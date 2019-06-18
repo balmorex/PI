@@ -1,12 +1,6 @@
 <h1>{{ pizza.nom_pizza }}</h1>
 
 
-{% for pizza in pizza_list %}
-	<li>
-		<a href="{% url 'pi:index' pizza.pizza_id %}">{{ pizza.nom_pizza }}
-		</a>
-	</li>
-{% endfor %}
 
 <!--
 
