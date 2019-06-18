@@ -15,10 +15,11 @@ class IndexView(generic.ListView):
 	context_object_name='pizza_list'
 
 	def get_queryset(self):
-		return Pizza.objects.order_by(pizza_id)
+		return Pizza.objects.all()
 
-
-
+class HomeView(generic.DetailView):
+	model=Pizza
+	template_name='pi/home.html'
 
 
 #nuevo

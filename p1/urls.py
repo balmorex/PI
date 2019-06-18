@@ -16,6 +16,8 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 
+
+
 urlpatterns = [
     path('pi/', include('pi.urls')),	#pi es la APLICACION
     path('admin/', admin.site.urls),
