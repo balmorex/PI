@@ -2,7 +2,25 @@
 
 <link rel="stylesheet" type="text/css" href="{% static 'pi/style.css' %}">
 
-{% if pizza_list %}
+<!DOCTYPE html>
+<html>
+<head>
+	<title>
+		{% block title %}Pizzeria{% endblock %}
+	</title>
+</head>
+<body>
+	<div class="container">
+		<div class="navbar navbar-dark bg-dark">
+			<div class="container">
+				<div class="navbar-header">HEADER OF NAVBAR
+					<button class="navbar-toggle" type="submit" onclick="{% url 'pi:login' %}">INICIAR SESION
+					</button>
+				</div>
+			</div>
+		</div>
+	</div>
+	{% if pizza_list %}
 	<ul>
 		{% for pizza in pizza_list %}
 		<li>
@@ -11,6 +29,19 @@
 		</li>
 		{% endfor %}
 	</ul>
-{% else %}
-	<p>No pizza disponible we:(</p>
-{% endif %}
+	{% else %}
+		<p>No pizza disponible we:(</p>
+	{% endif %}
+	<div class="container">
+		<div id="banner" class="page-header">
+			<h1>{% block encabezado %}HDP{% endblock %}</h1>
+			<p><a href="#home"></a></p>
+		</div>
+	</div>
+	{% block content %}
+		<h2>
+			Contenido dinamico
+		</h2>
+	{% endblock %}
+</body>
+</html>

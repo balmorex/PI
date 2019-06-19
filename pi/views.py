@@ -22,11 +22,11 @@ class HomeView(generic.DetailView):
 	template_name='pi/home.html'
 
 #comentar en caso de err
-"""
-class LoginView(generic.LoginView):
+
+class LoginView(generic.DetailView):
 	model=Empleado
 	template_name='pi/login.html'
-"""	
+
 #...
 
 #nuevo

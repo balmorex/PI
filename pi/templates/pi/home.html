@@ -1,16 +1,23 @@
-<h1>{{ pizza.nom_pizza }}</h1>
+{% load static %}
+
+<link rel="stylesheet" type="text/css" href="{% static 'pi/home.css' %}">
 
 
 
-<!--
-
-{% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}
-
-<form action="{% url 'pi:home' pizza.pizza_id %}" method="post">
-{% csrf_token %}
-{% for pizza in pizza.get_all %}
-    
-{% endfor %}
-<input type="submit" value="Vote">
-</form>
--->
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Opciones</title>
+</head>
+<body>
+	<div>
+		<ol>
+			<h1>{{ pizza.nom_pizza }}</h1>
+			<p>Acá podria ir la descripción de la pizza</p>
+		</ol>
+		<div>
+			<p>Acá la descripción completa</p>
+		</div>
+	</div>
+</body>
+</html>
