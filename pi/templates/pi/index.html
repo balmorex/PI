@@ -14,7 +14,8 @@
 		<div class="navbar navbar-dark bg-dark">
 			<div class="container">
 				<div class="navbar-header">HEADER OF NAVBAR
-					<button class="navbar-toggle" type="submit" onclick="{% url 'pi:login' %}">INICIAR SESION
+					<button class="submit" onblur="True">
+						<a href="{% url 'pi:login' %}" title="iniciar sesion">Iniciar Sesión</a>
 					</button>
 				</div>
 			</div>
@@ -32,16 +33,12 @@
 	{% else %}
 		<p>No pizza disponible we:(</p>
 	{% endif %}
-	<div class="container">
-		<div id="banner" class="page-header">
-			<h1>{% block encabezado %}HDP{% endblock %}</h1>
-			<p><a href="#home"></a></p>
-		</div>
-	</div>
+	
 	{% block content %}
 		<h2>
-			Contenido dinamico
+			Contenido
 		</h2>
 	{% endblock %}
+
 </body>
 </html>
