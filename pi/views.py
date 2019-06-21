@@ -37,6 +37,6 @@ def home(request, pizza_id):
 
 
 #comentar en caso de error
-def login(request):
+def login(request, string):
 	return render(request,'pi/login.html')
 #......
