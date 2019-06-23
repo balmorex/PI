@@ -25,7 +25,7 @@ class HomeView(generic.DetailView):
 
 class LoginView(generic.DetailView):
 	model=Empleado
-	template_name='pi/login.html'
+	template_name='registration/login.html'
 
 #...
 
@@ -37,6 +37,8 @@ def home(request, pizza_id):
 
 
 #comentar en caso de error
+"""
 def login(request, string):
 	return render(request,'pi/login.html')
 #......
+"""

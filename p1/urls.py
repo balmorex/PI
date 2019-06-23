@@ -16,9 +16,14 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 
-
+#LOGIN DJANGO, DELETE IN CASE OF ERR
+from django.views.generic.base import TemplateView
+from django.conf.urls import url
 
 urlpatterns = [
     path('pi/', include('pi.urls')),	#pi es la APLICACION
     path('admin/', admin.site.urls),
+
+    #DJANGO LOGIN, DEL IN CASE OF ERR
+    path('', TemplateView.as_view(template_name='home.html'), name='home'),
 ]
